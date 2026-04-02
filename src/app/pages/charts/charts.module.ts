@@ -27,6 +27,8 @@ import { EchartsAreaStackComponent } from './echarts/echarts-area-stack.componen
 import { EchartsBarAnimationComponent } from './echarts/echarts-bar-animation.component';
 import { EchartsRadarComponent } from './echarts/echarts-radar.component';
 
+import * as echarts from 'echarts';
+
 const components = [
   ChartjsBarComponent,
   ChartjsLineComponent,
@@ -53,7 +55,7 @@ const components = [
   imports: [
     ThemeModule,
     ChartsRoutingModule,
-    NgxEchartsModule,
+    NgxEchartsModule.forRoot({ echarts }),
     NgxChartsModule,
     NgChartsModule,
     NbCardModule,

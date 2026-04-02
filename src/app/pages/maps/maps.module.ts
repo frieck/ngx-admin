@@ -6,14 +6,15 @@ import { NbCardModule } from '@nebular/theme';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { MapsRoutingModule, routedComponents } from './maps-routing.module';
+import * as echarts from 'echarts';
 
 @NgModule({
   imports: [
     ThemeModule,
     GoogleMapsModule,
-    LeafletModule.forRoot(),
+    LeafletModule,
     MapsRoutingModule,
-    NgxEchartsModule,
+    NgxEchartsModule.forRoot({ echarts }),
     NbCardModule,
   ],
   exports: [],

@@ -31,6 +31,8 @@ import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
 import { FormsModule } from '@angular/forms';
 
+import * as echarts from 'echarts';
+
 @NgModule({
   imports: [
     FormsModule,
@@ -45,7 +47,7 @@ import { FormsModule } from '@angular/forms';
     NbListModule,
     NbIconModule,
     NbButtonModule,
-    NgxEchartsModule,
+    NgxEchartsModule.forRoot({ echarts }),
   ],
   declarations: [
     DashboardComponent,

@@ -56,6 +56,8 @@ import { EarningPieChartComponent } from './earning-card/back-side/earning-pie-c
 import { EarningCardFrontComponent } from './earning-card/front-side/earning-card-front.component';
 import { EarningLiveUpdateChartComponent } from './earning-card/front-side/earning-live-update-chart.component';
 
+import * as echarts from 'echarts';
+
 @NgModule({
   imports: [
     ThemeModule,
@@ -68,7 +70,7 @@ import { EarningLiveUpdateChartComponent } from './earning-card/front-side/earni
     NbListModule,
     NgChartsModule,
     NbProgressBarModule,
-    NgxEchartsModule,
+    NgxEchartsModule.forRoot({ echarts }),
     NgxChartsModule,
     LeafletModule,
   ],
