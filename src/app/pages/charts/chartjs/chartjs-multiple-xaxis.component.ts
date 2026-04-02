@@ -4,104 +4,112 @@ import { NbThemeService } from '@nebular/theme';
 @Component({
   selector: 'ngx-chartjs-multiple-xaxis',
   template: `
-    <chart type="line" [data]="data" [options]="options"></chart>
+    <canvas
+      baseChart
+      [type]="'line'"
+      [data]="data"
+      [options]="options"
+      [legend]="true">
+    </canvas>
   `,
 })
 export class ChartjsMultipleXaxisComponent implements OnDestroy {
-  data: {};
+  data: any;
   options: any;
   themeSubscription: any;
 
   constructor(private theme: NbThemeService) {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
       this.data = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [{
-          label: 'dataset - big points',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.primary,
-          backgroundColor: colors.primary,
-          fill: false,
-          borderDash: [5, 5],
-          pointRadius: 8,
-          pointHoverRadius: 10,
-        }, {
-          label: 'dataset - individual point sizes',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.dangerLight,
-          backgroundColor: colors.dangerLight,
-          fill: false,
-          borderDash: [5, 5],
-          pointRadius: 8,
-          pointHoverRadius: 10,
-        }, {
-          label: 'dataset - large pointHoverRadius',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.info,
-          backgroundColor: colors.info,
-          fill: false,
-          pointRadius: 8,
-          pointHoverRadius: 10,
-        }, {
-          label: 'dataset - large pointHitRadius',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.success,
-          backgroundColor: colors.success,
-          fill: false,
-          pointRadius: 8,
-          pointHoverRadius: 10,
-        }],
+        datasets: [
+          {
+            label: 'dataset - big points',
+            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+            borderColor: colors.primary,
+            backgroundColor: colors.primary,
+            fill: false,
+            borderDash: [5, 5],
+            pointRadius: 8,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'dataset - individual point sizes',
+            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+            borderColor: colors.dangerLight,
+            backgroundColor: colors.dangerLight,
+            fill: false,
+            borderDash: [5, 5],
+            pointRadius: 8,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'dataset - large pointHoverRadius',
+            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+            borderColor: colors.info,
+            backgroundColor: colors.info,
+            fill: false,
+            pointRadius: 8,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'dataset - large pointHitRadius',
+            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+            borderColor: colors.success,
+            backgroundColor: colors.success,
+            fill: false,
+            pointRadius: 8,
+            pointHoverRadius: 10,
+          },
+        ],
       };
 
       this.options = {
         responsive: true,
         maintainAspectRatio: false,
-        legend: {
-          position: 'bottom',
-          labels: {
-            fontColor: chartjs.textColor,
-          },
-        },
         hover: {
           mode: 'index',
         },
         scales: {
-          xAxes: [
-            {
+          x: {
+            display: true,
+            title: {
               display: true,
-              scaleLabel: {
-                display: true,
-                labelString: 'Month',
-              },
-              gridLines: {
-                display: true,
-                color: chartjs.axisLineColor,
-              },
-              ticks: {
-                fontColor: chartjs.textColor,
-              },
+              text: 'Month',
             },
-          ],
-          yAxes: [
-            {
+            grid: {
               display: true,
-              scaleLabel: {
-                display: true,
-                labelString: 'Value',
-              },
-              gridLines: {
-                display: true,
-                color: chartjs.axisLineColor,
-              },
-              ticks: {
-                fontColor: chartjs.textColor,
-              },
+              color: chartjs.axisLineColor,
             },
-          ],
+            ticks: {
+              color: chartjs.textColor,
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: 'Value',
+            },
+            grid: {
+              display: true,
+              color: chartjs.axisLineColor,
+            },
+            ticks: {
+              color: chartjs.textColor,
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: chartjs.textColor,
+            },
+          },
         },
       };
     });
