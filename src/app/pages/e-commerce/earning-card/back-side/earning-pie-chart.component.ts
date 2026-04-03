@@ -4,9 +4,9 @@ import { delay, takeWhile } from 'rxjs/operators';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'ngx-earning-pie-chart',
-  styleUrls: ['./earning-card-back.component.scss'],
-  template: `
+    selector: 'ngx-earning-pie-chart',
+    styleUrls: ['./earning-card-back.component.scss'],
+    template: `
     <div echarts
          class="echart"
          [options]="options"
@@ -14,6 +14,7 @@ import * as echarts from 'echarts';
          (chartClick)="onChartClick($event)">
     </div>
   `,
+    standalone: false
 })
 export class EarningPieChartComponent implements AfterViewInit, OnDestroy {
 

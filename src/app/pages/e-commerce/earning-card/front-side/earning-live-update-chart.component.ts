@@ -5,14 +5,15 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'ngx-earning-live-update-chart',
-  styleUrls: ['earning-card-front.component.scss'],
-  template: `
+    selector: 'ngx-earning-live-update-chart',
+    styleUrls: ['earning-card-front.component.scss'],
+    template: `
     <div echarts
          class="echart"
          [options]="option"
          (chartInit)="onChartInit($event)"></div>
   `,
+    standalone: false
 })
 export class EarningLiveUpdateChartComponent implements AfterViewInit, OnDestroy, OnChanges {
   private alive = true;

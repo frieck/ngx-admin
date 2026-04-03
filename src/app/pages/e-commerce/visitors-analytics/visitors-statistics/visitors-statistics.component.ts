@@ -6,9 +6,10 @@ import * as echarts from 'echarts';
 
 
 @Component({
-  selector: 'ngx-visitors-statistics',
-  styleUrls: ['./visitors-statistics.component.scss'],
-  templateUrl: './visitors-statistics.component.html',
+    selector: 'ngx-visitors-statistics',
+    styleUrls: ['./visitors-statistics.component.scss'],
+    templateUrl: './visitors-statistics.component.html',
+    standalone: false
 })
 export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDestroy {
 

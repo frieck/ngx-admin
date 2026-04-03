@@ -6,9 +6,9 @@ import { ElectricityChart } from '../../../../@core/data/electricity';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'ngx-electricity-chart',
-  styleUrls: ['./electricity-chart.component.scss'],
-  template: `
+    selector: 'ngx-electricity-chart',
+    styleUrls: ['./electricity-chart.component.scss'],
+    template: `
     <div echarts
          [options]="option"
          [merge]="option"
@@ -16,6 +16,7 @@ import * as echarts from 'echarts';
          (chartInit)="onChartInit($event)">
     </div>
   `,
+    standalone: false
 })
 export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
 

@@ -5,14 +5,15 @@ import { LayoutService } from '../../../../@core/utils';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'ngx-stats-area-chart',
-  styleUrls: ['stats-card-back.component.scss'],
-  template: `
+    selector: 'ngx-stats-area-chart',
+    styleUrls: ['stats-card-back.component.scss'],
+    template: `
     <div echarts [options]="option"
          class="echart"
          (chartInit)="onChartInit($event)">
     </div>
   `,
+    standalone: false
 })
 export class StatsAreaChartComponent implements AfterViewInit, OnDestroy {
 
