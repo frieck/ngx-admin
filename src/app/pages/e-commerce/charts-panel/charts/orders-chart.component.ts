@@ -4,7 +4,7 @@ import { delay, takeWhile } from 'rxjs/operators';
 
 import { OrdersChart } from '../../../../@core/data/orders-chart';
 import { LayoutService } from '../../../../@core/utils/layout.service';
-import * as echarts from 'echarts';
+import * as echarts from 'echarts/core';
 
 @Component({
     selector: 'ngx-orders-chart',

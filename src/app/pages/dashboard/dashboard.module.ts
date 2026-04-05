@@ -31,7 +31,7 @@ import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
 import { FormsModule } from '@angular/forms';
 
-import * as echarts from 'echarts';
+import * as echarts from 'echarts/core';
 
 @NgModule({
   imports: [

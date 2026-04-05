@@ -5,12 +5,14 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./chart-panel-summary.component.scss'],
     template: `
     <div class="summary-container">
-      <div *ngFor="let item of summary">
-        <div>{{ item.title }}</div>
-        <div class="h6">{{ item.value }}</div>
-      </div>
+      @for (item of summary; track item) {
+        <div>
+          <div>{{ item.title }}</div>
+          <div class="h6">{{ item.value }}</div>
+        </div>
+      }
     </div>
-  `,
+    `,
     standalone: false
 })
 export class ChartPanelSummaryComponent {

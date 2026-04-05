@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { delay, takeWhile } from 'rxjs/operators';
-import * as echarts from 'echarts';
+import * as echarts from 'echarts/core';
 
 @Component({
     selector: 'ngx-earning-pie-chart',

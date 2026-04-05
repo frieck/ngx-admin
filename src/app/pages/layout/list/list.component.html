@@ -4,9 +4,11 @@
       <nb-card-header>Some Fruits</nb-card-header>
       <nb-card-body>
         <nb-list>
-          <nb-list-item *ngFor="let fruit of fruits">
-            {{ fruit }}
-          </nb-list-item>
+          @for (fruit of fruits; track fruit) {
+            <nb-list-item>
+              {{ fruit }}
+            </nb-list-item>
+          }
         </nb-list>
       </nb-card-body>
     </nb-card>
@@ -16,10 +18,12 @@
     <nb-card class="list-card" size="small">
       <nb-card-header>Users</nb-card-header>
       <nb-list>
-        <nb-list-item *ngFor="let user of users">
-          <nb-user [name]="user.name" [title]="user.title">
-          </nb-user>
-        </nb-list-item>
+        @for (user of users; track user) {
+          <nb-list-item>
+            <nb-user [name]="user.name" [title]="user.title">
+            </nb-user>
+          </nb-list-item>
+        }
       </nb-list>
     </nb-card>
   </div>

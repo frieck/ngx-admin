@@ -82,12 +82,13 @@ export class TreeGridComponent {
 @Component({
     selector: 'ngx-fs-icon',
     template: `
-    <nb-tree-grid-row-toggle [expanded]="expanded" *ngIf="isDir(); else fileIcon">
-    </nb-tree-grid-row-toggle>
-    <ng-template #fileIcon>
+    @if (isDir()) {
+      <nb-tree-grid-row-toggle [expanded]="expanded">
+      </nb-tree-grid-row-toggle>
+    } @else {
       <nb-icon icon="file-text-outline"></nb-icon>
-    </ng-template>
-  `,
+    }
+    `,
     standalone: false
 })
 export class FsIconComponent {
