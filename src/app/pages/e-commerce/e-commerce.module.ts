@@ -57,6 +57,25 @@ import { EarningCardFrontComponent } from './earning-card/front-side/earning-car
 import { EarningLiveUpdateChartComponent } from './earning-card/front-side/earning-live-update-chart.component';
 
 import * as echarts from 'echarts/core';
+import { BarChart, LineChart, PieChart, RadarChart } from 'echarts/charts';
+import { DatasetComponent, GraphicComponent, GridComponent, LegendComponent, TitleComponent, ToolboxComponent, TooltipComponent, TransformComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+
+echarts.use([
+  LineChart,
+  BarChart,
+  PieChart,
+  RadarChart,
+  GridComponent,
+  TooltipComponent,
+  LegendComponent,
+  TitleComponent,
+  DatasetComponent,
+  TransformComponent,
+  ToolboxComponent,
+  GraphicComponent,
+  CanvasRenderer,
+]);
 
 @NgModule({
   imports: [
