@@ -1,11 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule, NbIconModule } from '@nebular/theme';
 
 @Component({
     selector: 'ngx-kitten',
     styleUrls: ['./kitten.component.scss'],
     templateUrl: './kitten.component.html',
-    standalone: false
+    imports: [NbCardModule, NbIconModule]
 })
 export class KittenComponent implements OnDestroy {
 

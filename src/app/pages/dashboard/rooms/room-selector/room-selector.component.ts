@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostBinding, OnDestroy, OnInit, Output } from '@angular/core';
 import { Location, LocationStrategy } from '@angular/common';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule } from '@nebular/theme';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
     selector: 'ngx-room-selector',
     templateUrl: './room-selector.component.html',
     styleUrls: ['./room-selector.component.scss'],
-    standalone: false
+    imports: [NbCardModule]
 })
 export class RoomSelectorComponent implements OnInit, OnDestroy {
 

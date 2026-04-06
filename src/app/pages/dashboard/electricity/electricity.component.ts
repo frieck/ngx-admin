@@ -1,15 +1,16 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule, NbTabsetModule, NbListModule, NbIconModule, NbSelectModule, NbOptionModule } from '@nebular/theme';
 
 import { Electricity, ElectricityChart, ElectricityData } from '../../../@core/data/electricity';
 import { takeWhile } from 'rxjs/operators';
 import { forkJoin } from 'rxjs';
+import { ElectricityChartComponent } from './electricity-chart/electricity-chart.component';
 
 @Component({
     selector: 'ngx-electricity',
     styleUrls: ['./electricity.component.scss'],
     templateUrl: './electricity.component.html',
-    standalone: false
+    imports: [NbCardModule, NbTabsetModule, NbListModule, NbIconModule, NbSelectModule, NbOptionModule, ElectricityChartComponent]
 })
 export class ElectricityComponent implements OnDestroy {
 

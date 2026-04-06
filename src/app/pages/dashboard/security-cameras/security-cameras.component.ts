@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { NbComponentSize, NbMediaBreakpointsService, NbThemeService } from '@nebular/theme';
+import { NbComponentSize, NbMediaBreakpointsService, NbThemeService, NbCardModule, NbButtonModule, NbIconModule, NbActionsModule } from '@nebular/theme';
 
 import { Camera, SecurityCamerasData } from '../../../@core/data/security-cameras';
 
@@ -9,7 +9,7 @@ import { Camera, SecurityCamerasData } from '../../../@core/data/security-camera
     selector: 'ngx-security-cameras',
     styleUrls: ['./security-cameras.component.scss'],
     templateUrl: './security-cameras.component.html',
-    standalone: false
+    imports: [NbCardModule, NbButtonModule, NbIconModule, NbActionsModule]
 })
 export class SecurityCamerasComponent implements OnInit, OnDestroy {
 

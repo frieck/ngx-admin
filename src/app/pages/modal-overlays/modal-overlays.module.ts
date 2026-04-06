@@ -79,8 +79,6 @@ const SERVICES = [
 @NgModule({
     imports: [
         ...MODULES,
-    ],
-    declarations: [
         ...COMPONENTS,
     ],
     providers: [

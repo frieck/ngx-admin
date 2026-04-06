@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { PieChartModule } from '@swimlane/ngx-charts';
 
 @Component({
     selector: 'ngx-d3-pie',
@@ -11,7 +12,7 @@ import { NbThemeService } from '@nebular/theme';
       [labels]="showLabels">
     </ngx-charts-pie-chart>
   `,
-    standalone: false
+    imports: [PieChartModule]
 })
 export class D3PieComponent implements OnDestroy {
   results = [

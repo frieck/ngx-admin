@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } 
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { LayoutService } from '../../../../@core/utils/layout.service';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 declare const echarts: any;
 
@@ -14,7 +15,7 @@ declare const echarts: any;
          (chartInit)="onChartInit($event)">
     </div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class TrafficBarChartComponent implements AfterViewInit, OnDestroy, OnChanges {
 

@@ -3,6 +3,7 @@ import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { LayoutService } from '../../../../@core/utils/layout.service';
 import * as echarts from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 
 @Component({
@@ -19,7 +20,7 @@ import * as echarts from 'echarts/core';
          (chartInit)="onChartInit($event)">
     </div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class CountryOrdersChartComponent implements OnDestroy, OnChanges {
 

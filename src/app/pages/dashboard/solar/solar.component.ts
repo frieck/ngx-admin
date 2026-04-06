@@ -1,6 +1,7 @@
 import { delay } from 'rxjs/operators';
 import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule } from '@nebular/theme';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 declare const echarts: any;
 
@@ -20,7 +21,7 @@ declare const echarts: any;
       </nb-card-body>
     </nb-card>
   `,
-    standalone: false
+    imports: [NbCardModule, NgxEchartsDirective]
 })
 export class SolarComponent implements AfterViewInit, OnDestroy {
 

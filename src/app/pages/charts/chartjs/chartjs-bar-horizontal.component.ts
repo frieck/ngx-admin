@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { NgChartsModule } from 'ng2-charts';
 
 @Component({
     selector: 'ngx-chartjs-bar-horizontal',
@@ -12,7 +13,7 @@ import { NbThemeService } from '@nebular/theme';
       [legend]="true">
     </canvas>
   `,
-    standalone: false
+    imports: [NgChartsModule]
 })
 export class ChartjsBarHorizontalComponent implements OnDestroy {
   data: any;

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { LayoutService } from '../../../../@core/utils/layout.service';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
     selector: 'ngx-stats-bar-animation-chart',
@@ -12,7 +13,7 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
          (chartInit)="onChartInit($event)">
     </div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class StatsBarAnimationChartComponent implements AfterViewInit, OnDestroy {
 

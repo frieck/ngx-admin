@@ -5,7 +5,6 @@ import { NbCalendarDayCellComponent } from '@nebular/theme';
     selector: 'ngx-day-cell',
     templateUrl: 'day-cell.component.html',
     styleUrls: ['day-cell.component.scss'],
-    standalone: false
 })
 export class DayCellComponent extends NbCalendarDayCellComponent<Date> {
   @HostBinding('class') classes = 'day-cell';

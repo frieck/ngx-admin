@@ -1,8 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule, NbSelectModule, NbOptionModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 
 import { TrafficChartData } from '../../../@core/data/traffic-chart';
+import { TrafficChartComponent } from './traffic-chart.component';
 
 @Component({
     selector: 'ngx-traffic',
@@ -22,7 +23,7 @@ import { TrafficChartData } from '../../../@core/data/traffic-chart';
       <ngx-traffic-chart [points]="trafficChartPoints"></ngx-traffic-chart>
     </nb-card>
     `,
-    standalone: false
+    imports: [NbCardModule, NbSelectModule, NbOptionModule, TrafficChartComponent]
 })
 export class TrafficComponent implements OnDestroy {
 

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { fruits } from './fruits-list';
+import { NbCardModule, NbListModule, NbUserModule } from '@nebular/theme';
 
 @Component({
     selector: 'ngx-list',
     templateUrl: 'list.component.html',
     styleUrls: ['list.component.scss'],
-    standalone: false
+    imports: [NbCardModule, NbListModule, NbUserModule]
 })
 export class ListComponent {
   fruits = fruits;

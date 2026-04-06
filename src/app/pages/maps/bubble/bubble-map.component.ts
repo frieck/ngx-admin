@@ -2,8 +2,9 @@ import { Component, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { combineLatest } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule } from '@nebular/theme';
 import { registerMap } from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
     selector: 'ngx-bubble-map',
@@ -14,7 +15,7 @@ import { registerMap } from 'echarts/core';
       <div echarts [options]="options" class="echarts"></div>
     </nb-card>
   `,
-    standalone: false
+    imports: [NbCardModule, NgxEchartsDirective]
 })
 export class BubbleMapComponent implements OnDestroy {
 

@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule, NbSelectModule, NbOptionModule, NbListModule, NbIconModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 
 import { UserActivityData, UserActive } from '../../../@core/data/user-activity';
@@ -8,7 +8,7 @@ import { UserActivityData, UserActive } from '../../../@core/data/user-activity'
     selector: 'ngx-user-activity',
     styleUrls: ['./user-activity.component.scss'],
     templateUrl: './user-activity.component.html',
-    standalone: false
+    imports: [NbCardModule, NbSelectModule, NbOptionModule, NbListModule, NbIconModule]
 })
 export class ECommerceUserActivityComponent implements OnDestroy {
 

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { NbComponentShape, NbComponentSize, NbComponentStatus, NbCardModule, NbButtonModule, NbActionsModule, NbUserModule, NbIconModule } from '@nebular/theme';
 
 @Component({
     selector: 'ngx-buttons',
     styleUrls: ['./buttons.component.scss'],
     templateUrl: './buttons.component.html',
-    standalone: false
+    imports: [NbCardModule, NbButtonModule, NbActionsModule, NbUserModule, NbIconModule]
 })
 export class ButtonsComponent {
   statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];

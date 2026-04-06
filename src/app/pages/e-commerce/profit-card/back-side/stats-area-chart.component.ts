@@ -3,6 +3,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../../@core/utils';
 import * as echarts from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
     selector: 'ngx-stats-area-chart',
@@ -13,7 +14,7 @@ import * as echarts from 'echarts/core';
          (chartInit)="onChartInit($event)">
     </div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class StatsAreaChartComponent implements AfterViewInit, OnDestroy {
 

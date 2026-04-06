@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NbCardModule, NbTabsetModule, NbRouteTabsetModule } from '@nebular/theme';
 
 @Component({
     selector: 'ngx-tab1',
@@ -10,8 +11,7 @@ import { Component } from '@angular/core';
       </a> and led to the introduction of washing machines (1904), water heaters (1889), refrigerators, sewing machines,
       dishwashers, and clothes dryers.
     </p>
-  `,
-    standalone: false
+  `
 })
 export class Tab1Component { }
 
@@ -19,8 +19,7 @@ export class Tab1Component { }
     selector: 'ngx-tab2',
     template: `
     <p>Tab 2 works!</p>
-  `,
-    standalone: false
+  `
 })
 export class Tab2Component { }
 
@@ -28,7 +27,7 @@ export class Tab2Component { }
     selector: 'ngx-tabs',
     styleUrls: ['./tabs.component.scss'],
     templateUrl: './tabs.component.html',
-    standalone: false
+    imports: [NbCardModule, NbTabsetModule, NbRouteTabsetModule]
 })
 export class TabsComponent {
 

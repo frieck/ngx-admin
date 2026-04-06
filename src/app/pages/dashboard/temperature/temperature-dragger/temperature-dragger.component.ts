@@ -10,6 +10,7 @@ import {
   OnChanges,
 } from '@angular/core';
 import { Location, LocationStrategy } from '@angular/common';
+import { NbButtonModule, NbIconModule } from '@nebular/theme';
 
 let uniqueId = 0;
 const VIEW_BOX_SIZE = 300;
@@ -18,7 +19,7 @@ const VIEW_BOX_SIZE = 300;
     selector: 'ngx-temperature-dragger',
     templateUrl: './temperature-dragger.component.html',
     styleUrls: ['./temperature-dragger.component.scss'],
-    standalone: false
+    imports: [NbButtonModule, NbIconModule]
 })
 export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 

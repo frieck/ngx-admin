@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { NbIconModule } from '@nebular/theme';
 
 @Component({
     selector: 'ngx-slide-out',
     styleUrls: ['./slide-out.component.scss'],
     templateUrl: './slide-out.component.html',
-    standalone: false
+    imports: [NbIconModule]
 })
 export class SlideOutComponent {
 

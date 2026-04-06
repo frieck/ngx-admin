@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output } from
 import { NbThemeService } from '@nebular/theme';
 import { delay, takeWhile } from 'rxjs/operators';
 import * as echarts from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
     selector: 'ngx-earning-pie-chart',
@@ -14,7 +15,7 @@ import * as echarts from 'echarts/core';
          (chartClick)="onChartClick($event)">
     </div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class EarningPieChartComponent implements AfterViewInit, OnDestroy {
 

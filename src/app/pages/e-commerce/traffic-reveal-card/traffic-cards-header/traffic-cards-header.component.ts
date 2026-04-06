@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule, NbSelectModule, NbOptionModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 
 @Component({
     selector: 'ngx-traffic-cards-header',
     styleUrls: ['./traffic-cards-header.component.scss'],
     templateUrl: './traffic-cards-header.component.html',
-    standalone: false
+    imports: [NbCardModule, NbSelectModule, NbOptionModule]
 })
 export class TrafficCardsHeaderComponent implements OnDestroy {
   private alive = true;

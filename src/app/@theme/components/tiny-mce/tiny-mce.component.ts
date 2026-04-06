@@ -3,8 +3,7 @@ import { LocationStrategy } from '@angular/common';
 
 @Component({
     selector: 'ngx-tiny-mce',
-    template: '',
-    standalone: false
+    template: ''
 })
 export class TinyMCEComponent implements OnDestroy, AfterViewInit {
 

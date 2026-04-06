@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NbCardModule, NbTabsetModule } from '@nebular/theme';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'ngx-popover-tabs',
@@ -16,7 +18,7 @@ import { Component } from '@angular/core';
       </nb-tab>
     </nb-tabset>
   `,
-    standalone: false
+    imports: [NbTabsetModule]
 })
 export class NgxPopoverTabsComponent {
 }
@@ -39,7 +41,7 @@ export class NgxPopoverTabsComponent {
       </form>
     </div>
   `,
-    standalone: false
+    imports: [FormsModule]
 })
 export class NgxPopoverFormComponent {
 }
@@ -64,7 +66,7 @@ export class NgxPopoverFormComponent {
       max-width: 20rem;
     }
   `],
-    standalone: false
+    imports: [NbCardModule]
 })
 export class NgxPopoverCardComponent {
 }

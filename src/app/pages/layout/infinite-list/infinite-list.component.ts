@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { NewsService } from '../news.service';
+import { NbCardModule, NbListModule } from '@nebular/theme';
+import { NewsPostComponent } from './news-post/news-post.component';
+import { NewsPostPlaceholderComponent } from './news-post-placeholder/news-post-placeholder.component';
 
 @Component({
     selector: 'ngx-infinite-list',
     templateUrl: 'infinite-list.component.html',
     styleUrls: ['infinite-list.component.scss'],
-    standalone: false
+    imports: [NbCardModule, NbListModule, NewsPostComponent, NewsPostPlaceholderComponent]
 })
 export class InfiniteListComponent {
 

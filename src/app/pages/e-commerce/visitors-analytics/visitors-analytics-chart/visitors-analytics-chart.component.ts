@@ -4,11 +4,12 @@ import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../../@core/utils';
 import { OutlineData } from '../../../../@core/data/visitors-analytics';
 import * as echarts from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
-  selector: 'ngx-visitors-analytics-chart',
-  styleUrls: ['./visitors-analytics-chart.component.scss'],
-  template: `
+    selector: 'ngx-visitors-analytics-chart',
+    styleUrls: ['./visitors-analytics-chart.component.scss'],
+    template: `
     <div echarts
          [options]="option"
          [merge]="option"
@@ -16,7 +17,7 @@ import * as echarts from 'echarts/core';
          (chartInit)="onChartInit($event)">
     </div>
   `,
-  standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, OnDestroy {
 

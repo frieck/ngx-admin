@@ -1,15 +1,19 @@
 import { Component, OnDestroy } from '@angular/core';
 import { takeWhile } from 'rxjs/operators';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService, NbCardModule } from '@nebular/theme';
 import { OutlineData, VisitorsAnalyticsData } from '../../../@core/data/visitors-analytics';
 import { forkJoin } from 'rxjs';
+import { ECommerceLegendChartComponent } from '../legend-chart/legend-chart.component';
+import { ECommerceVisitorsAnalyticsChartComponent } from './visitors-analytics-chart/visitors-analytics-chart.component';
+import { SlideOutComponent } from '../slide-out/slide-out.component';
+import { ECommerceVisitorsStatisticsComponent } from './visitors-statistics/visitors-statistics.component';
 
 
 @Component({
     selector: 'ngx-ecommerce-visitors-analytics',
     styleUrls: ['./visitors-analytics.component.scss'],
     templateUrl: './visitors-analytics.component.html',
-    standalone: false
+    imports: [NbCardModule, ECommerceLegendChartComponent, ECommerceVisitorsAnalyticsChartComponent, SlideOutComponent, ECommerceVisitorsStatisticsComponent]
 })
 export class ECommerceVisitorsAnalyticsComponent implements OnDestroy {
   private alive = true;

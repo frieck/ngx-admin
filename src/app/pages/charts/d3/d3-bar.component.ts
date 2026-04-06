@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { BarChartModule } from '@swimlane/ngx-charts';
 
 @Component({
     selector: 'ngx-d3-bar',
@@ -14,7 +15,7 @@ import { NbThemeService } from '@nebular/theme';
       [yAxisLabel]="yAxisLabel">
     </ngx-charts-bar-vertical>
   `,
-    standalone: false
+    imports: [BarChartModule]
 })
 export class D3BarComponent implements OnDestroy {
 

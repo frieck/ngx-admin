@@ -7,18 +7,16 @@ import { TablesRoutingModule, routedComponents } from './tables-routing.module';
 import { FsIconComponent } from './tree-grid/tree-grid.component';
 
 @NgModule({
-  imports: [
-    NbCardModule,
-    NbTreeGridModule,
-    NbIconModule,
-    NbInputModule,
-    ThemeModule,
-    TablesRoutingModule,
-    Angular2SmartTableModule,
-  ],
-  declarations: [
-    ...routedComponents,
-    FsIconComponent,
-  ],
+    imports: [
+        NbCardModule,
+        NbTreeGridModule,
+        NbIconModule,
+        NbInputModule,
+        ThemeModule,
+        TablesRoutingModule,
+        Angular2SmartTableModule,
+        ...routedComponents,
+        FsIconComponent,
+    ],
 })
 export class TablesModule { }

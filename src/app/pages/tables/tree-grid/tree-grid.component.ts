@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { Component, Input, forwardRef } from '@angular/core';
+import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbCardModule, NbInputModule, NbTreeGridModule, NbIconModule } from '@nebular/theme';
 
 interface TreeNode<T> {
   data: T;
@@ -18,7 +18,7 @@ interface FSEntry {
     selector: 'ngx-tree-grid',
     templateUrl: './tree-grid.component.html',
     styleUrls: ['./tree-grid.component.scss'],
-    standalone: false
+    imports: [NbCardModule, NbInputModule, NbTreeGridModule, forwardRef(() => FsIconComponent)]
 })
 export class TreeGridComponent {
   customColumn = 'name';
@@ -89,7 +89,7 @@ export class TreeGridComponent {
       <nb-icon icon="file-text-outline"></nb-icon>
     }
     `,
-    standalone: false
+    imports: [NbTreeGridModule, NbIconModule]
 })
 export class FsIconComponent {
   @Input() kind: string;

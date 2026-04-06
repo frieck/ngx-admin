@@ -4,6 +4,7 @@ import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../../@core/utils';
 import { ElectricityChart } from '../../../../@core/data/electricity';
 import * as echarts from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
     selector: 'ngx-electricity-chart',
@@ -16,7 +17,7 @@ import * as echarts from 'echarts/core';
          (chartInit)="onChartInit($event)">
     </div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
 

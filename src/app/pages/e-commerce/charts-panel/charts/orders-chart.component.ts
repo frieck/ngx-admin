@@ -5,6 +5,7 @@ import { delay, takeWhile } from 'rxjs/operators';
 import { OrdersChart } from '../../../../@core/data/orders-chart';
 import { LayoutService } from '../../../../@core/utils/layout.service';
 import * as echarts from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
     selector: 'ngx-orders-chart',
@@ -17,7 +18,7 @@ import * as echarts from 'echarts/core';
          (chartInit)="onChartInit($event)">
     </div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges {
 

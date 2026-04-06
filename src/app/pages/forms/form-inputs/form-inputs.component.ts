@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { NbCardModule, NbInputModule, NbSelectModule, NbOptionModule, NbCheckboxModule, NbRadioModule } from '@nebular/theme';
 
 @Component({
     selector: 'ngx-form-inputs',
     styleUrls: ['./form-inputs.component.scss'],
     templateUrl: './form-inputs.component.html',
-    standalone: false
+    imports: [NbCardModule, NbInputModule, NbSelectModule, NbOptionModule, NbCheckboxModule, NbRadioModule]
 })
 export class FormInputsComponent {
 

@@ -9,17 +9,15 @@ import { MapsRoutingModule, routedComponents } from './maps-routing.module';
 import * as echarts from 'echarts/core';
 
 @NgModule({
-  imports: [
-    ThemeModule,
-    GoogleMapsModule,
-    LeafletModule,
-    MapsRoutingModule,
-    NgxEchartsModule.forRoot({ echarts }),
-    NbCardModule,
-  ],
-  exports: [],
-  declarations: [
-    ...routedComponents,
-  ],
+    imports: [
+        ThemeModule,
+        GoogleMapsModule,
+        LeafletModule,
+        MapsRoutingModule,
+        NgxEchartsModule.forRoot({ echarts }),
+        NbCardModule,
+        ...routedComponents,
+    ],
+    exports: [],
 })
 export class MapsModule { }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { NbCardModule, NbSearchModule } from '@nebular/theme';
 
 @Component({
     selector: 'ngx-search-fields',
     templateUrl: 'search-fields.component.html',
-    standalone: false
+    imports: [NbCardModule, NbSearchModule]
 })
 export class SearchComponent {
 }

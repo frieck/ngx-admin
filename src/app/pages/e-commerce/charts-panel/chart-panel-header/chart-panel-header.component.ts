@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { NbMediaBreakpoint, NbMediaBreakpointsService, NbThemeService } from '@nebular/theme';
+import { NbMediaBreakpoint, NbMediaBreakpointsService, NbThemeService, NbSelectModule, NbOptionModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
+import { ECommerceLegendChartComponent } from '../../legend-chart/legend-chart.component';
 
 
 @Component({
     selector: 'ngx-chart-panel-header',
     styleUrls: ['./chart-panel-header.component.scss'],
     templateUrl: './chart-panel-header.component.html',
-    standalone: false
+    imports: [ECommerceLegendChartComponent, NbSelectModule, NbOptionModule]
 })
 export class ChartPanelHeaderComponent implements OnDestroy {
 

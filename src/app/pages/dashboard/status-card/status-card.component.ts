@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { NbCardModule } from '@nebular/theme';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'ngx-status-card',
@@ -17,7 +19,7 @@ import { Component, Input } from '@angular/core';
       </div>
     </nb-card>
   `,
-    standalone: false
+    imports: [NbCardModule, NgClass]
 })
 export class StatusCardComponent {
 

@@ -4,8 +4,7 @@ import { NewsPost } from '../../news.service';
 
 @Component({
     selector: 'ngx-news-post',
-    templateUrl: 'news-post.component.html',
-    standalone: false
+    templateUrl: 'news-post.component.html'
 })
 export class NewsPostComponent {
 

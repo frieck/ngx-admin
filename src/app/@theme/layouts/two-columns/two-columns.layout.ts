@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NbLayoutModule, NbSidebarModule } from '@nebular/theme';
+import { HeaderComponent } from '../../components/header/header.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
     selector: 'ngx-two-columns-layout',
@@ -26,6 +29,6 @@ import { Component } from '@angular/core';
 
     </nb-layout>
   `,
-    standalone: false
+    imports: [NbLayoutModule, HeaderComponent, NbSidebarModule, FooterComponent]
 })
 export class TwoColumnsLayoutComponent {}

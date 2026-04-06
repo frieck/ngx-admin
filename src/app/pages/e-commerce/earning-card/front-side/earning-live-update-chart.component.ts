@@ -3,6 +3,7 @@ import { AfterViewInit, Component, Input, OnChanges, OnDestroy } from '@angular/
 import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../../@core/utils/layout.service';
 import * as echarts from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
     selector: 'ngx-earning-live-update-chart',
@@ -13,7 +14,7 @@ import * as echarts from 'echarts/core';
          [options]="option"
          (chartInit)="onChartInit($event)"></div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class EarningLiveUpdateChartComponent implements AfterViewInit, OnDestroy, OnChanges {
   private alive = true;

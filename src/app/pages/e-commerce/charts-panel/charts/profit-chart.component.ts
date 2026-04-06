@@ -5,6 +5,7 @@ import { takeWhile } from 'rxjs/operators';
 import { ProfitChart } from '../../../../@core/data/profit-chart';
 import { LayoutService } from '../../../../@core/utils/layout.service';
 import * as echarts from 'echarts/core';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 @Component({
     selector: 'ngx-profit-chart',
@@ -12,7 +13,7 @@ import * as echarts from 'echarts/core';
     template: `
     <div echarts [options]="options" class="echart" (chartInit)="onChartInit($event)"></div>
   `,
-    standalone: false
+    imports: [NgxEchartsDirective]
 })
 export class ProfitChartComponent implements AfterViewInit, OnDestroy, OnChanges {
 
