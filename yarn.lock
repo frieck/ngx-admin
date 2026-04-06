@@ -4092,10 +4092,10 @@ boolbase@^1.0.0:
   resolved "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@4.3.1:
-  version "4.3.1"
-  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-4.3.1.tgz"
-  integrity sha512-rXqOmH1VilAt2DyPzluTi2blhk17bO7ef+zLLPlWvG494pDxcM234pJ8wTc/6R40UWizAIIMgxjvxZg5kmsbag==
+bootstrap@5.3.8:
+  version "5.3.8"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.8.tgz#6401a10057a22752d21f4e19055508980656aeed"
+  integrity sha512-HP1SZDqaLDPwsNiqRqi5NcP0SSXciX2s9E+RyqJIIqGo+vJeN5AJVM98CXmW/Wux0nQ5L7jeWUdplCEf0Ee+tg==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -7700,8 +7700,8 @@ invert-kv@^1.0.0:
 
 ionicons@2.0.1:
   version "2.0.1"
-  resolved "https://registry.npmjs.org/ionicons/-/ionicons-2.0.1.tgz"
-  integrity sha1-yjmBEyk+qHAkT1OPCqu9S1sgmj4=
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-2.0.1.tgz#ca398113293ea870244f538f0aabbd4b5b209a3e"
+  integrity sha512-ySWjaL3PxB4JFMvr7/02sByWM7TQv1mrvRYFvUwFcVEEHEK/RKEP6MFhcnTmKhoPM6Ih6s5wH003fkVk1wiXLQ==
 
 ip-address@^10.0.1:
   version "10.1.0"
@@ -9635,7 +9635,7 @@ natural-compare@^1.4.0:
 
 nebular-icons@1.1.0:
   version "1.1.0"
-  resolved "https://registry.npmjs.org/nebular-icons/-/nebular-icons-1.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/nebular-icons/-/nebular-icons-1.1.0.tgz#83a725822f963a60636e54be6c7145eff2306d3f"
   integrity sha512-4TkJgDrjXw8qsOsc2NN6OBlRJYAJJpvqtjV+gpv+NV6amPgMPQNNuEvbenYXAMFmjs3uShgKOvmpnCX8Ua1oWQ==
 
 needle@^3.1.0:

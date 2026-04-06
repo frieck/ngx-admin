@@ -1,5 +1,5 @@
-@import '../../../@theme/styles/themes';
-@import '@nebular/theme/styles/global/breakpoints';
+@use '../../../@theme/styles/themes' as *;
+@use '@nebular/theme/styles/global/breakpoints' as *;
 
 @include nb-install-component() {
 

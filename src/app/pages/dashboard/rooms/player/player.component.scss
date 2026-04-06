@@ -1,6 +1,7 @@
-@import '../../../../@theme/styles/themes';
-@import '@nebular/theme/styles/global/breakpoints';
-@import '../../../../@theme/styles/breakpoints';
+@use '../../../../@theme/styles/themes' as *;
+@use '@nebular/theme/styles/global/breakpoints' as *;
+@use '../../../../@theme/styles/breakpoints' as *;
+@use '../../../../@theme/styles/breakpoints' as *;
 
 @include nb-install-component() {
   height: 100%;

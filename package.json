@@ -47,7 +47,7 @@
     "@nebular/theme": "^17.0.0",
     "@swimlane/ngx-charts": "^20.5.0",
     "angular2-smart-table": "^3.0.0",
-    "bootstrap": "4.3.1",
+    "bootstrap": "5.3.8",
     "chart.js": "^4.5.1",
     "ckeditor": "4.7.3",
     "ckeditor4-angular": "^5.2.1",

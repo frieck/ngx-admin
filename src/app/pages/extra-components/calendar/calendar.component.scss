@@ -1,5 +1,5 @@
-@import '@nebular/theme/styles/global/breakpoints';
-@import '../../../@theme/styles/themes';
+@use '@nebular/theme/styles/global/breakpoints' as *;
+@use '../../../@theme/styles/themes' as *;
 
 @include nb-install-component() {
   .calendars {

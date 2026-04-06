@@ -1,21 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
 
 // themes - our custom or/and out of the box themes
-@import 'themes';
+@use 'themes' as *;
 
 // framework component themes (styles tied to theme variables)
-@import '@nebular/theme/styles/globals';
-@import '@nebular/auth/styles/globals';
+@use '@nebular/theme/styles/globals' as *;
+@use '@nebular/auth/styles/globals' as *;
 
 // loading progress bar theme
-@import './pace.theme';
+@use './pace.theme' as *;
+@use './layout' as *;
+@use './overrides' as *;
 
-@import './layout';
-@import './overrides';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
 
 // install the framework and custom global styles
 @include nb-install() {
-
   // framework global styles
   @include nb-theme-global();
   @include nb-auth-global();
@@ -23,6 +22,5 @@
   @include ngx-layout();
   // loading progress bar
   @include ngx-pace-theme();
-
   @include nb-overrides();
-};
+}
