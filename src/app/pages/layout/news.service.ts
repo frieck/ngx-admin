@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
@@ -14,8 +14,8 @@ export class NewsPost {
 
 @Injectable()
 export class NewsService {
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
 
   load(page: number, pageSize: number): Observable<NewsPost[]> {
     const startIndex = ((page - 1) % TOTAL_PAGES) * pageSize;

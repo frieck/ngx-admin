@@ -1,5 +1,5 @@
 import { NbMenuService, NbCardModule, NbButtonModule } from '@nebular/theme';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 @Component({
     selector: 'ngx-not-found',
@@ -8,9 +8,8 @@ import { Component } from '@angular/core';
     imports: [NbCardModule, NbButtonModule]
 })
 export class NotFoundComponent {
+  private menuService = inject(NbMenuService);
 
-  constructor(private menuService: NbMenuService) {
-  }
 
   goToHome() {
     this.menuService.navigateHome();

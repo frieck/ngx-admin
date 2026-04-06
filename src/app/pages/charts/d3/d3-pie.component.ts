@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { PieChartModule } from '@swimlane/ngx-charts';
 
@@ -15,6 +15,8 @@ import { PieChartModule } from '@swimlane/ngx-charts';
     imports: [PieChartModule]
 })
 export class D3PieComponent implements OnDestroy {
+  private theme = inject(NbThemeService);
+
   results = [
     { name: 'Germany', value: 8940 },
     { name: 'USA', value: 5000 },
@@ -25,7 +27,7 @@ export class D3PieComponent implements OnDestroy {
   colorScheme: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
       this.colorScheme = {

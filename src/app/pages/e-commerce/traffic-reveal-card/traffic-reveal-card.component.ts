@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { TrafficList, TrafficListData } from '../../../@core/data/traffic-list';
 import { TrafficBarData, TrafficBar } from '../../../@core/data/traffic-bar';
 import { takeWhile } from 'rxjs/operators';
@@ -14,6 +14,9 @@ import { TrafficBackCardComponent } from './back-side/traffic-back-card.componen
     imports: [NbCardModule, TrafficCardsHeaderComponent, TrafficFrontCardComponent, NbIconModule, TrafficBackCardComponent]
 })
 export class TrafficRevealCardComponent implements OnDestroy {
+  private trafficListService = inject(TrafficListData);
+  private trafficBarService = inject(TrafficBarData);
+
 
   private alive = true;
 
@@ -22,8 +25,7 @@ export class TrafficRevealCardComponent implements OnDestroy {
   revealed = false;
   period: string = 'week';
 
-  constructor(private trafficListService: TrafficListData,
-              private trafficBarService: TrafficBarData) {
+  constructor() {
     this.getTrafficFrontCardData(this.period);
     this.getTrafficBackCardData(this.period);
   }

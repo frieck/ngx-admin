@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { NgChartsModule } from 'ng2-charts';
 
@@ -16,11 +16,13 @@ import { NgChartsModule } from 'ng2-charts';
     imports: [NgChartsModule]
 })
 export class ChartjsPieComponent implements OnDestroy {
+  private theme = inject(NbThemeService);
+
   data: any;
   options: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;

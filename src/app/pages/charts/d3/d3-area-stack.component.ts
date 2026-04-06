@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { AreaChartModule } from '@swimlane/ngx-charts';
 
@@ -21,6 +21,8 @@ import { AreaChartModule } from '@swimlane/ngx-charts';
     imports: [AreaChartModule]
 })
 export class D3AreaStackComponent implements OnDestroy {
+  private theme = inject(NbThemeService);
+
   multi = [{
     name: 'Germany',
     series: [{
@@ -60,7 +62,7 @@ export class D3AreaStackComponent implements OnDestroy {
   colorScheme: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
       this.colorScheme = {

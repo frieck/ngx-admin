@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { NbMediaBreakpoint, NbMediaBreakpointsService, NbThemeService, NbCardModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { CountryOrderData } from '../../../@core/data/country-order';
@@ -26,6 +26,10 @@ import { CountryOrdersChartComponent } from './chart/country-orders-chart.compon
     imports: [NbCardModule, CountryOrdersMapComponent, CountryOrdersChartComponent]
 })
 export class CountryOrdersComponent implements OnInit, OnDestroy {
+  private themeService = inject(NbThemeService);
+  private breakpointService = inject(NbMediaBreakpointsService);
+  private countryOrderService = inject(CountryOrderData);
+
 
   private alive = true;
 
@@ -35,9 +39,7 @@ export class CountryOrdersComponent implements OnInit, OnDestroy {
   breakpoint: NbMediaBreakpoint = { name: '', width: 0 };
   breakpoints: any;
 
-  constructor(private themeService: NbThemeService,
-              private breakpointService: NbMediaBreakpointsService,
-              private countryOrderService: CountryOrderData) {
+  constructor() {
     this.breakpoints = this.breakpointService.getBreakpointsMap();
   }
 

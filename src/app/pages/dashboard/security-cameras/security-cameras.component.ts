@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { NbComponentSize, NbMediaBreakpointsService, NbThemeService, NbCardModule, NbButtonModule, NbIconModule, NbActionsModule } from '@nebular/theme';
@@ -12,6 +12,10 @@ import { Camera, SecurityCamerasData } from '../../../@core/data/security-camera
     imports: [NbCardModule, NbButtonModule, NbIconModule, NbActionsModule]
 })
 export class SecurityCamerasComponent implements OnInit, OnDestroy {
+  private themeService = inject(NbThemeService);
+  private breakpointService = inject(NbMediaBreakpointsService);
+  private securityCamerasService = inject(SecurityCamerasData);
+
 
   private destroy$ = new Subject<void>();
 
@@ -19,12 +23,6 @@ export class SecurityCamerasComponent implements OnInit, OnDestroy {
   selectedCamera: Camera;
   isSingleView = false;
   actionSize: NbComponentSize = 'medium';
-
-  constructor(
-    private themeService: NbThemeService,
-    private breakpointService: NbMediaBreakpointsService,
-    private securityCamerasService: SecurityCamerasData,
-  ) {}
 
   ngOnInit() {
     this.securityCamerasService.getCamerasData()

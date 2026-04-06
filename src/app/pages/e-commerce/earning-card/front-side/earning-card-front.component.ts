@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { NbThemeService, NbCardModule, NbSelectModule, NbOptionModule, NbIconModule } from '@nebular/theme';
 import { interval , Subscription } from 'rxjs';
 import { switchMap, takeWhile } from 'rxjs/operators';
@@ -13,6 +13,9 @@ import { NumberWithCommasPipe } from '../../../../@theme/pipes/number-with-comma
     imports: [NbCardModule, NbSelectModule, NbOptionModule, NbIconModule, EarningLiveUpdateChartComponent, NumberWithCommasPipe]
 })
 export class EarningCardFrontComponent implements OnDestroy, OnInit {
+  private themeService = inject(NbThemeService);
+  private earningService = inject(EarningData);
+
   private alive = true;
 
   @Input() selectedCurrency: string = 'Bitcoin';
@@ -23,8 +26,7 @@ export class EarningCardFrontComponent implements OnDestroy, OnInit {
   earningLiveUpdateCardData: LiveUpdateChart;
   liveUpdateChartData: { value: [string, number] }[];
 
-  constructor(private themeService: NbThemeService,
-              private earningService: EarningData) {
+  constructor() {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnDestroy } from '@angular/core';
+import { Component, HostBinding, Input, OnDestroy, inject } from '@angular/core';
 import { PlayerService, Track } from '../../../../@core/utils/player.service';
 import { NbCardModule, NbButtonModule, NbIconModule } from '@nebular/theme';
 import { TimingPipe } from '../../../../@theme/pipes/timing.pipe';
@@ -10,6 +10,8 @@ import { TimingPipe } from '../../../../@theme/pipes/timing.pipe';
     imports: [NbCardModule, NbButtonModule, NbIconModule, TimingPipe]
 })
 export class PlayerComponent implements OnDestroy {
+  private playerService = inject(PlayerService);
+
   @Input()
   @HostBinding('class.collapsed')
   collapsed: boolean;
@@ -18,7 +20,7 @@ export class PlayerComponent implements OnDestroy {
   player: HTMLAudioElement;
   shuffle: boolean;
 
-  constructor(private playerService: PlayerService) {
+  constructor() {
     this.track = this.playerService.random();
     this.createPlayer();
   }

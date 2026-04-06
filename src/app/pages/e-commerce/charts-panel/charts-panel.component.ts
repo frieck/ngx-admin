@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild, inject } from '@angular/core';
 import { takeWhile } from 'rxjs/operators';
 
 import { OrdersChartComponent } from './charts/orders-chart.component';
@@ -17,6 +17,8 @@ import { ChartPanelHeaderComponent } from './chart-panel-header/chart-panel-head
     imports: [NbCardModule, NbTabsetModule, ChartPanelSummaryComponent, ChartPanelHeaderComponent, OrdersChartComponent, ProfitChartComponent]
 })
 export class ECommerceChartsPanelComponent implements OnDestroy {
+  private ordersProfitChartService = inject(OrdersProfitChartData);
+
 
   private alive = true;
 
@@ -28,7 +30,7 @@ export class ECommerceChartsPanelComponent implements OnDestroy {
   @ViewChild('ordersChart', { static: true }) ordersChart: OrdersChartComponent;
   @ViewChild('profitChart', { static: true }) profitChart: ProfitChartComponent;
 
-  constructor(private ordersProfitChartService: OrdersProfitChartData) {
+  constructor() {
     this.ordersProfitChartService.getOrderProfitChartSummary()
       .pipe(takeWhile(() => this.alive))
       .subscribe((summary) => {

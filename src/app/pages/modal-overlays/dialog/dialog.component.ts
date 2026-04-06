@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, inject } from '@angular/core';
 import { NbDialogService, NbCardModule, NbButtonModule } from '@nebular/theme';
 import { ShowcaseDialogComponent } from './showcase-dialog/showcase-dialog.component';
 import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
@@ -10,10 +10,10 @@ import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prom
     imports: [NbCardModule, NbButtonModule]
 })
 export class DialogComponent {
+  private dialogService = inject(NbDialogService);
+
 
   names: string[] = [];
-
-  constructor(private dialogService: NbDialogService) {}
 
   open() {
     this.dialogService.open(ShowcaseDialogComponent, {

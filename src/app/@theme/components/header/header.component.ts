@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService, NbIconModule, NbSelectModule, NbOptionModule, NbActionsModule, NbSearchModule, NbUserModule, NbContextMenuModule } from '@nebular/theme';
 
 import { UserData } from '../../../@core/data/users';
@@ -14,6 +14,13 @@ import { NbSecurityModule } from '@nebular/security';
     imports: [NbIconModule, NbSelectModule, NbOptionModule, NbActionsModule, NbSearchModule, NbSecurityModule, NbUserModule, NbContextMenuModule]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  private sidebarService = inject(NbSidebarService);
+  private menuService = inject(NbMenuService);
+  private themeService = inject(NbThemeService);
+  private userService = inject(UserData);
+  private layoutService = inject(LayoutService);
+  private breakpointService = inject(NbMediaBreakpointsService);
+
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
@@ -41,14 +48,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentTheme = 'default';
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
-
-  constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
-              private themeService: NbThemeService,
-              private userService: UserData,
-              private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
-  }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;

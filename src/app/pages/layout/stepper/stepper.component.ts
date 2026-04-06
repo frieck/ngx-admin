@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbCardModule, NbStepperModule, NbButtonModule } from '@nebular/theme';
 import { NgClass } from '@angular/common';
@@ -10,13 +10,12 @@ import { NgClass } from '@angular/common';
     imports: [NbCardModule, NbStepperModule, NbButtonModule, FormsModule, ReactiveFormsModule, NgClass]
 })
 export class StepperComponent implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+
 
   firstForm: UntypedFormGroup;
   secondForm: UntypedFormGroup;
   thirdForm: UntypedFormGroup;
-
-  constructor(private fb: UntypedFormBuilder) {
-  }
 
   ngOnInit() {
     this.firstForm = this.fb.group({

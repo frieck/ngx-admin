@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { delay, takeWhile } from 'rxjs/operators';
 import * as echarts from 'echarts/core';
@@ -18,6 +18,8 @@ import { NgxEchartsDirective } from 'ngx-echarts';
     imports: [NgxEchartsDirective]
 })
 export class EarningPieChartComponent implements AfterViewInit, OnDestroy {
+  private theme = inject(NbThemeService);
+
 
   @Output() selectPie = new EventEmitter<{value: number; name: string; color: string}>();
   @Input() values: {value: number; name: string; }[];
@@ -27,9 +29,6 @@ export class EarningPieChartComponent implements AfterViewInit, OnDestroy {
 
   options: any = {};
   echartsInstance;
-
-  constructor(private theme: NbThemeService) {
-  }
 
   onChartInit(ec) {
     this.echartsInstance = ec;

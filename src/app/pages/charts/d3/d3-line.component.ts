@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { LineChartModule } from '@swimlane/ngx-charts';
 
@@ -20,6 +20,8 @@ import { LineChartModule } from '@swimlane/ngx-charts';
     imports: [LineChartModule]
 })
 export class D3LineComponent implements OnDestroy {
+  private theme = inject(NbThemeService);
+
   multi = [
     {
       name: 'Germany',
@@ -71,7 +73,7 @@ export class D3LineComponent implements OnDestroy {
   colorScheme: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
       this.colorScheme = {

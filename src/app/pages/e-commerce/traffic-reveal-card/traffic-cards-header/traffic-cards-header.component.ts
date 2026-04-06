@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
 import { NbThemeService, NbCardModule, NbSelectModule, NbOptionModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 
@@ -9,6 +9,8 @@ import { takeWhile } from 'rxjs/operators';
     imports: [NbCardModule, NbSelectModule, NbOptionModule]
 })
 export class TrafficCardsHeaderComponent implements OnDestroy {
+  private themeService = inject(NbThemeService);
+
   private alive = true;
 
   @Output() periodChange = new EventEmitter<string>();
@@ -18,7 +20,7 @@ export class TrafficCardsHeaderComponent implements OnDestroy {
   types: string[] = ['week', 'month', 'year'];
   currentTheme: string;
 
-  constructor(private themeService: NbThemeService) {
+  constructor() {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {

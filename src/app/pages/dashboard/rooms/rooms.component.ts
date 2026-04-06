@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnDestroy } from '@angular/core';
+import { Component, HostBinding, OnDestroy, inject } from '@angular/core';
 import { NbThemeService, NbMediaBreakpoint, NbMediaBreakpointsService, NbCardModule, NbIconModule } from '@nebular/theme';
 import { map } from 'rxjs/operators';
 import { RoomSelectorComponent } from './room-selector/room-selector.component';
@@ -21,6 +21,9 @@ import { PlayerComponent } from './player/player.component';
     imports: [NbCardModule, NbIconModule, RoomSelectorComponent, PlayerComponent]
 })
 export class RoomsComponent implements OnDestroy {
+  private themeService = inject(NbThemeService);
+  private breakpointService = inject(NbMediaBreakpointsService);
+
 
   @HostBinding('class.expanded')
   expanded: boolean;
@@ -33,8 +36,7 @@ export class RoomsComponent implements OnDestroy {
   themeSubscription: any;
   themeChangeSubscription: any;
 
-  constructor(private themeService: NbThemeService,
-              private breakpointService: NbMediaBreakpointsService) {
+  constructor() {
 
     this.breakpoints = this.breakpointService.getBreakpointsMap();
     this.themeSubscription = this.themeService.onMediaQueryChange()

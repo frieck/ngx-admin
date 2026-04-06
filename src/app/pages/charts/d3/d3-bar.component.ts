@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { BarChartModule } from '@swimlane/ngx-charts';
 
@@ -18,6 +18,8 @@ import { BarChartModule } from '@swimlane/ngx-charts';
     imports: [BarChartModule]
 })
 export class D3BarComponent implements OnDestroy {
+  private theme = inject(NbThemeService);
+
 
   results = [
     { name: 'Germany', value: 8940 },
@@ -32,7 +34,7 @@ export class D3BarComponent implements OnDestroy {
   colorScheme: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
       this.colorScheme = {

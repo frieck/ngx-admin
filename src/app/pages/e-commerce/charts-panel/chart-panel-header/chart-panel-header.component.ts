@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
 import { NbMediaBreakpoint, NbMediaBreakpointsService, NbThemeService, NbSelectModule, NbOptionModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { ECommerceLegendChartComponent } from '../../legend-chart/legend-chart.component';
@@ -11,6 +11,9 @@ import { ECommerceLegendChartComponent } from '../../legend-chart/legend-chart.c
     imports: [ECommerceLegendChartComponent, NbSelectModule, NbOptionModule]
 })
 export class ChartPanelHeaderComponent implements OnDestroy {
+  private themeService = inject(NbThemeService);
+  private breakpointService = inject(NbMediaBreakpointsService);
+
 
   private alive = true;
 
@@ -24,8 +27,7 @@ export class ChartPanelHeaderComponent implements OnDestroy {
   breakpoints: any;
   currentTheme: string;
 
-  constructor(private themeService: NbThemeService,
-              private breakpointService: NbMediaBreakpointsService) {
+  constructor() {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {

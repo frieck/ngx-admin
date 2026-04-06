@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LocalDataSource, Angular2SmartTableModule } from 'angular2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
@@ -11,6 +11,8 @@ import { NbCardModule } from '@nebular/theme';
     imports: [NbCardModule, Angular2SmartTableModule]
 })
 export class SmartTableComponent {
+  private service = inject(SmartTableData);
+
 
   settings = {
     add: {
@@ -57,7 +59,7 @@ export class SmartTableComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
+  constructor() {
     const data = this.service.getData();
     this.source.load(data);
   }

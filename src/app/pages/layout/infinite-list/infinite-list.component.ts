@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NewsService } from '../news.service';
 import { NbCardModule, NbListModule } from '@nebular/theme';
 import { NewsPostComponent } from './news-post/news-post.component';
@@ -11,6 +11,8 @@ import { NewsPostPlaceholderComponent } from './news-post-placeholder/news-post-
     imports: [NbCardModule, NbListModule, NewsPostComponent, NewsPostPlaceholderComponent]
 })
 export class InfiniteListComponent {
+  private newsService = inject(NewsService);
+
 
 
   firstCard = {
@@ -26,8 +28,6 @@ export class InfiniteListComponent {
     pageToLoadNext: 1,
   };
   pageSize = 10;
-
-  constructor(private newsService: NewsService) {}
 
   loadNext(cardData) {
     if (cardData.loading) { return; }

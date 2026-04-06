@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NbDateService, NbCardModule, NbInputModule, NbDatepickerModule } from '@nebular/theme';
 
 @Component({
@@ -8,11 +8,13 @@ import { NbDateService, NbCardModule, NbInputModule, NbDatepickerModule } from '
     imports: [NbCardModule, NbInputModule, NbDatepickerModule]
 })
 export class DatepickerComponent {
+  protected dateService = inject<NbDateService<Date>>(NbDateService);
+
 
   min: Date;
   max: Date;
 
-  constructor(protected dateService: NbDateService<Date>) {
+  constructor() {
     this.min = this.dateService.addDay(this.dateService.today(), -5);
     this.max = this.dateService.addDay(this.dateService.today(), 5);
   }

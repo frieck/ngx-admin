@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NbWindowRef, NbInputModule } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
 
@@ -16,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     imports: [FormsModule, NbInputModule]
 })
 export class WindowFormComponent {
-  constructor(public windowRef: NbWindowRef) {}
+  windowRef = inject(NbWindowRef);
+
 
   close() {
     this.windowRef.close();

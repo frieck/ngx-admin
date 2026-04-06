@@ -1,14 +1,4 @@
-import {
-  Component,
-  HostListener,
-  ViewChild,
-  ElementRef,
-  Input,
-  Output,
-  EventEmitter,
-  AfterViewInit,
-  OnChanges,
-} from '@angular/core';
+import { Component, HostListener, ViewChild, ElementRef, Input, Output, EventEmitter, AfterViewInit, OnChanges, inject } from '@angular/core';
 import { Location, LocationStrategy } from '@angular/common';
 import { NbButtonModule, NbIconModule } from '@nebular/theme';
 
@@ -22,6 +12,9 @@ const VIEW_BOX_SIZE = 300;
     imports: [NbButtonModule, NbIconModule]
 })
 export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
+  private location = inject(Location);
+  private locationStrategy = inject(LocationStrategy);
+
 
   @ViewChild('svgRoot', { static: true }) svgRoot: ElementRef;
 
@@ -89,10 +82,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   private isMouseDown = false;
   private init = false;
 
-  constructor(
-    private location: Location,
-    private locationStrategy: LocationStrategy,
-  ) {
+  constructor() {
     this.oldValue = this.value;
   }
 

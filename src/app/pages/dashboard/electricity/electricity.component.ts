@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService, NbCardModule, NbTabsetModule, NbListModule, NbIconModule, NbSelectModule, NbOptionModule } from '@nebular/theme';
 
 import { Electricity, ElectricityChart, ElectricityData } from '../../../@core/data/electricity';
@@ -13,6 +13,9 @@ import { ElectricityChartComponent } from './electricity-chart/electricity-chart
     imports: [NbCardModule, NbTabsetModule, NbListModule, NbIconModule, NbSelectModule, NbOptionModule, ElectricityChartComponent]
 })
 export class ElectricityComponent implements OnDestroy {
+  private electricityService = inject(ElectricityData);
+  private themeService = inject(NbThemeService);
+
 
   private alive = true;
 
@@ -25,8 +28,7 @@ export class ElectricityComponent implements OnDestroy {
   currentTheme: string;
   themeSubscription: any;
 
-  constructor(private electricityService: ElectricityData,
-              private themeService: NbThemeService) {
+  constructor() {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {

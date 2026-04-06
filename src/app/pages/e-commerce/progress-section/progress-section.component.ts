@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { ProgressInfo, StatsProgressBarData } from '../../../@core/data/stats-progress-bar';
 import { takeWhile } from 'rxjs/operators';
 import { NbCardModule, NbProgressBarModule } from '@nebular/theme';
@@ -11,12 +11,14 @@ import { NumberWithCommasPipe } from '../../../@theme/pipes/number-with-commas.p
     imports: [NbCardModule, NbProgressBarModule, NumberWithCommasPipe]
 })
 export class ECommerceProgressSectionComponent implements OnDestroy {
+  private statsProgressBarService = inject(StatsProgressBarData);
+
 
   private alive = true;
 
   progressInfoData: ProgressInfo[];
 
-  constructor(private statsProgressBarService: StatsProgressBarData) {
+  constructor() {
     this.statsProgressBarService.getProgressInfoData()
       .pipe(takeWhile(() => this.alive))
       .subscribe((data) => {

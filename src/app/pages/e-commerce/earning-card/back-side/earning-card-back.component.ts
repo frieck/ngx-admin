@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { PieChart, EarningData } from '../../../../@core/data/earning';
 import { takeWhile } from 'rxjs/operators';
 import { NbCardModule } from '@nebular/theme';
@@ -11,6 +11,8 @@ import { EarningPieChartComponent } from './earning-pie-chart.component';
     imports: [NbCardModule, EarningPieChartComponent]
 })
 export class EarningCardBackComponent implements OnDestroy {
+  private earningService = inject(EarningData);
+
   private alive = true;
 
   earningPieChartData: PieChart[];
@@ -19,7 +21,7 @@ export class EarningCardBackComponent implements OnDestroy {
   value: number;
   defaultSelectedCurrency: string = 'Bitcoin';
 
-  constructor(private earningService: EarningData ) {
+  constructor() {
     this.earningService.getEarningPieChartData()
       .pipe(takeWhile(() => this.alive))
       .subscribe((earningPieChartData) => {

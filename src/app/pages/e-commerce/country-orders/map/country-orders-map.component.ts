@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
 
 import * as L from 'leaflet';
 
@@ -18,6 +18,9 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     imports: [LeafletModule]
 })
 export class CountryOrdersMapComponent implements OnDestroy {
+  private ecMapService = inject(CountryOrdersMapService);
+  private theme = inject(NbThemeService);
+
 
   @Input() countryId: string;
 
@@ -41,8 +44,7 @@ export class CountryOrdersMapComponent implements OnDestroy {
     maxBoundsViscosity: 1.0,
   };
 
-  constructor(private ecMapService: CountryOrdersMapService,
-              private theme: NbThemeService) {
+  constructor() {
 
     combineLatest([
       this.ecMapService.getCords(),

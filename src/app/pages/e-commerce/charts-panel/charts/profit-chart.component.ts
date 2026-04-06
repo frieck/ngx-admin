@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnDestroy, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 
@@ -16,6 +16,9 @@ import { NgxEchartsDirective } from 'ngx-echarts';
     imports: [NgxEchartsDirective]
 })
 export class ProfitChartComponent implements AfterViewInit, OnDestroy, OnChanges {
+  private theme = inject(NbThemeService);
+  private layoutService = inject(LayoutService);
+
 
   @Input()
   profitChartData: ProfitChart;
@@ -25,8 +28,7 @@ export class ProfitChartComponent implements AfterViewInit, OnDestroy, OnChanges
   echartsIntance: any;
   options: any = {};
 
-  constructor(private theme: NbThemeService,
-              private layoutService: LayoutService) {
+  constructor() {
     this.layoutService.onSafeChangeLayoutSize()
       .pipe(
         takeWhile(() => this.alive),

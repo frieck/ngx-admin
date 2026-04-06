@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { NgxEchartsDirective } from 'ngx-echarts';
 
@@ -10,11 +10,10 @@ import { NgxEchartsDirective } from 'ngx-echarts';
     imports: [NgxEchartsDirective]
 })
 export class EchartsMultipleXaxisComponent implements AfterViewInit, OnDestroy {
+  private theme = inject(NbThemeService);
+
   options: any = {};
   themeSubscription: any;
-
-  constructor(private theme: NbThemeService) {
-  }
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {

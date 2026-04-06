@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NbComponentStatus, NbGlobalLogicalPosition, NbGlobalPhysicalPosition, NbGlobalPosition, NbToastrService, NbToastrConfig, NbCardModule, NbSelectModule, NbOptionModule, NbInputModule, NbCheckboxModule, NbButtonModule } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
 
@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
     imports: [NbCardModule, NbSelectModule, NbOptionModule, NbInputModule, FormsModule, NbCheckboxModule, NbButtonModule]
 })
 export class ToastrComponent {
-  constructor(private toastrService: NbToastrService) {}
+  private toastrService = inject(NbToastrService);
+
 
   config: NbToastrConfig;
 

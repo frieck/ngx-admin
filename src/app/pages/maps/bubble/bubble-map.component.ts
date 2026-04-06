@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { combineLatest } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
@@ -18,6 +18,9 @@ import { NgxEchartsDirective } from 'ngx-echarts';
     imports: [NbCardModule, NgxEchartsDirective]
 })
 export class BubbleMapComponent implements OnDestroy {
+  private theme = inject(NbThemeService);
+  private http = inject(HttpClient);
+
 
   latlong: any = {};
   mapData: any[];
@@ -30,8 +33,7 @@ export class BubbleMapComponent implements OnDestroy {
 
   private alive = true;
 
-  constructor(private theme: NbThemeService,
-              private http: HttpClient) {
+  constructor() {
 
     combineLatest([
       this.http.get('assets/map/world.json'),

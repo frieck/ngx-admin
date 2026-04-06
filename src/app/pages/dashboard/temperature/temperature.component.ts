@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService, NbCardModule, NbTabsetModule, NbRadioModule } from '@nebular/theme';
 import { Temperature, TemperatureHumidityData } from '../../../@core/data/temperature-humidity';
 import { takeWhile } from 'rxjs/operators';
@@ -15,6 +15,9 @@ import { RoundPipe } from '../../../@theme/pipes/round.pipe';
     imports: [NbCardModule, NbTabsetModule, TemperatureDraggerComponent, NgClass, NbRadioModule, FormsModule, RoundPipe]
 })
 export class TemperatureComponent implements OnDestroy {
+  private themeService = inject(NbThemeService);
+  private temperatureHumidityService = inject(TemperatureHumidityData);
+
 
   private alive = true;
 
@@ -31,8 +34,7 @@ export class TemperatureComponent implements OnDestroy {
   theme: any;
   themeSubscription: any;
 
-  constructor(private themeService: NbThemeService,
-              private temperatureHumidityService: TemperatureHumidityData) {
+  constructor() {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(config => {

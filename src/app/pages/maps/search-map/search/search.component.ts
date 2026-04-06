@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { PositionModel } from '../entity/position.model';
 
 @Component({
@@ -6,14 +6,14 @@ import { PositionModel } from '../entity/position.model';
     templateUrl: './search.component.html'
 })
 export class SearchComponent implements OnInit {
+  private ngZone = inject(NgZone);
+
 
   @Output()
   positionChanged: EventEmitter<PositionModel> = new EventEmitter<PositionModel>();
 
   @ViewChild('search', { static: true })
   searchElementRef: ElementRef;
-
-  constructor(private ngZone: NgZone) {}
 
   ngOnInit() {
     const autocomplete = new google.maps.places.Autocomplete(

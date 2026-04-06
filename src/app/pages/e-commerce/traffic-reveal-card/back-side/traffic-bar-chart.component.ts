@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { LayoutService } from '../../../../@core/utils/layout.service';
@@ -18,6 +18,9 @@ declare const echarts: any;
     imports: [NgxEchartsDirective]
 })
 export class TrafficBarChartComponent implements AfterViewInit, OnDestroy, OnChanges {
+  private theme = inject(NbThemeService);
+  private layoutService = inject(LayoutService);
+
 
   @Input() data: number[];
   @Input() labels: string[];
@@ -28,8 +31,7 @@ export class TrafficBarChartComponent implements AfterViewInit, OnDestroy, OnCha
   option: any = {};
   echartsInstance: any;
 
-  constructor(private theme: NbThemeService,
-              private layoutService: LayoutService) {
+  constructor() {
     this.layoutService.onSafeChangeLayoutSize()
       .pipe(
         takeWhile(() => this.alive),

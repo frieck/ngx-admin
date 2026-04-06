@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef, inject } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbCardModule, NbInputModule, NbTreeGridModule, NbIconModule } from '@nebular/theme';
 
 interface TreeNode<T> {
@@ -21,6 +21,8 @@ interface FSEntry {
     imports: [NbCardModule, NbInputModule, NbTreeGridModule, forwardRef(() => FsIconComponent)]
 })
 export class TreeGridComponent {
+  private dataSourceBuilder = inject<NbTreeGridDataSourceBuilder<FSEntry>>(NbTreeGridDataSourceBuilder);
+
   customColumn = 'name';
   defaultColumns = [ 'size', 'kind', 'items' ];
   allColumns = [ this.customColumn, ...this.defaultColumns ];
@@ -30,7 +32,7 @@ export class TreeGridComponent {
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
+  constructor() {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 

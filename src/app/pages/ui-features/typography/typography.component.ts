@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService, NbMediaBreakpoint, NbMediaBreakpointsService, NbCardModule, NbAlertModule } from '@nebular/theme';
 
 @Component({
@@ -8,12 +8,14 @@ import { NbThemeService, NbMediaBreakpoint, NbMediaBreakpointsService, NbCardMod
     imports: [NbCardModule, NbAlertModule]
 })
 export class TypographyComponent implements OnDestroy {
+  private themeService = inject(NbThemeService);
+  private breakpointService = inject(NbMediaBreakpointsService);
+
   breakpoint: NbMediaBreakpoint;
   breakpoints: any;
   themeSubscription: any;
 
-  constructor(private themeService: NbThemeService,
-              private breakpointService: NbMediaBreakpointsService) {
+  constructor() {
 
     this.breakpoints = this.breakpointService.getBreakpointsMap();
     this.themeSubscription = this.themeService.onMediaQueryChange()

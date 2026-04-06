@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NbThemeService, NbCardModule, NbSelectModule, NbOptionModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 
@@ -26,6 +26,9 @@ import { TrafficChartComponent } from './traffic-chart.component';
     imports: [NbCardModule, NbSelectModule, NbOptionModule, TrafficChartComponent]
 })
 export class TrafficComponent implements OnDestroy {
+  private themeService = inject(NbThemeService);
+  private trafficChartService = inject(TrafficChartData);
+
 
   private alive = true;
 
@@ -34,8 +37,7 @@ export class TrafficComponent implements OnDestroy {
   types = ['week', 'month', 'year'];
   currentTheme: string;
 
-  constructor(private themeService: NbThemeService,
-              private trafficChartService: TrafficChartData) {
+  constructor() {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {

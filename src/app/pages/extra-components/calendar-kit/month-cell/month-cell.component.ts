@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, inject } from '@angular/core';
 import { NbCalendarCell, NbCalendarDayPickerComponent, NbCalendarMonthModelService, NbDateService, NbCalendarKitModule } from '@nebular/theme';
 import { TranslationWidth } from '@angular/common';
 
@@ -10,10 +10,14 @@ import { TranslationWidth } from '@angular/common';
 })
 export class CalendarKitMonthCellComponent extends NbCalendarDayPickerComponent<Date, Date>
   implements NbCalendarCell<Date, Date> {
+  private dateService = inject<NbDateService<Date>>(NbDateService);
+
   select: EventEmitter<Date> = new EventEmitter();
   selectedValue: Date;
 
-  constructor(private dateService: NbDateService<Date>, monthModel: NbCalendarMonthModelService<Date>) {
+  constructor() {
+    const monthModel = inject<NbCalendarMonthModelService<Date>>(NbCalendarMonthModelService);
+
     super(monthModel);
   }
 

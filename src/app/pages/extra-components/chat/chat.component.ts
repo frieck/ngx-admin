@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { ChatService } from './chat.service';
 import { NbCardModule, NbChatModule } from '@nebular/theme';
@@ -11,10 +11,12 @@ import { NbCardModule, NbChatModule } from '@nebular/theme';
     imports: [NbCardModule, NbChatModule]
 })
 export class ChatComponent {
+  protected chatService = inject(ChatService);
+
 
   messages: any[];
 
-  constructor(protected chatService: ChatService) {
+  constructor() {
     this.messages = this.chatService.loadMessages();
   }
 

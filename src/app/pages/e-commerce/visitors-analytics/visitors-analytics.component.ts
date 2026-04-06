@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { takeWhile } from 'rxjs/operators';
 import { NbThemeService, NbCardModule } from '@nebular/theme';
 import { OutlineData, VisitorsAnalyticsData } from '../../../@core/data/visitors-analytics';
@@ -16,14 +16,16 @@ import { ECommerceVisitorsStatisticsComponent } from './visitors-statistics/visi
     imports: [NbCardModule, ECommerceLegendChartComponent, ECommerceVisitorsAnalyticsChartComponent, SlideOutComponent, ECommerceVisitorsStatisticsComponent]
 })
 export class ECommerceVisitorsAnalyticsComponent implements OnDestroy {
+  private themeService = inject(NbThemeService);
+  private visitorsAnalyticsChartService = inject(VisitorsAnalyticsData);
+
   private alive = true;
 
   pieChartValue: number;
   chartLegend: {iconColor: string; title: string}[];
   visitorsAnalyticsData: { innerLine: number[]; outerLine: OutlineData[]; };
 
-  constructor(private themeService: NbThemeService,
-              private visitorsAnalyticsChartService: VisitorsAnalyticsData) {
+  constructor() {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NbDialogRef, NbCardModule, NbInputModule, NbButtonModule } from '@nebular/theme';
 
 @Component({
@@ -8,8 +8,8 @@ import { NbDialogRef, NbCardModule, NbInputModule, NbButtonModule } from '@nebul
     imports: [NbCardModule, NbInputModule, NbButtonModule]
 })
 export class DialogNamePromptComponent {
+  protected ref = inject<NbDialogRef<DialogNamePromptComponent>>(NbDialogRef);
 
-  constructor(protected ref: NbDialogRef<DialogNamePromptComponent>) {}
 
   cancel() {
     this.ref.close();

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges, inject } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { LayoutService } from '../../../../@core/utils/layout.service';
@@ -23,6 +23,9 @@ import { NgxEchartsDirective } from 'ngx-echarts';
     imports: [NgxEchartsDirective]
 })
 export class CountryOrdersChartComponent implements OnDestroy, OnChanges {
+  private theme = inject(NbThemeService);
+  private layoutService = inject(LayoutService);
+
 
   @Input() countryName: string;
   @Input() data: number[];
@@ -34,8 +37,7 @@ export class CountryOrdersChartComponent implements OnDestroy, OnChanges {
   option: any = {};
   echartsInstance;
 
-  constructor(private theme: NbThemeService,
-              private layoutService: LayoutService) {
+  constructor() {
     this.layoutService.onSafeChangeLayoutSize()
       .pipe(
         takeWhile(() => this.alive),

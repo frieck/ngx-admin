@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NbIconLibraries, NbCardModule, NbIconModule } from '@nebular/theme';
 
 @Component({
@@ -12,7 +12,9 @@ export class IconsComponent {
 
   evaIcons = [];
 
-  constructor(iconsLibrary: NbIconLibraries) {
+  constructor() {
+    const iconsLibrary = inject(NbIconLibraries);
+
     this.evaIcons = Array.from(iconsLibrary.getPack('eva').icons.keys())
       .filter(icon => icon.indexOf('outline') === -1);
 

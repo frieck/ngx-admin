@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { NbThemeService, NbCardModule } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { TrafficBarChartComponent } from './traffic-bar-chart.component';
@@ -10,6 +10,8 @@ import { TrafficBarChartComponent } from './traffic-bar-chart.component';
     imports: [NbCardModule, TrafficBarChartComponent]
 })
 export class TrafficBackCardComponent implements OnDestroy {
+  private themeService = inject(NbThemeService);
+
 
   private alive = true;
 
@@ -17,7 +19,7 @@ export class TrafficBackCardComponent implements OnDestroy {
 
   currentTheme: string;
 
-  constructor(private themeService: NbThemeService) {
+  constructor() {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
