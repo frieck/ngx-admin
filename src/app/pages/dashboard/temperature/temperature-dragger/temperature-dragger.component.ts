@@ -134,12 +134,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
     this.invalidateClipPathStr();
     this.invalidatePinPosition();
-
-    // Chrome fix, temporary solution
-    // TODO: review set data to styles object
-    setTimeout(() => {
-      this.invalidateGradientArcs();
-    });
+    this.invalidateGradientArcs();
   }
 
   private calculateVars() {

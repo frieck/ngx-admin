@@ -1,9 +1,9 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 
 @Component({
-    selector: 'ngx-search-input',
-    styleUrls: ['./search-input.component.scss'],
-    template: `
+  selector: 'ngx-search-input',
+  styleUrls: ['./search-input.component.scss'],
+  template: `
     <i class="control-icon ion ion-ios-search"
        (click)="showInput()"></i>
     <input placeholder="Type your search request here..."
@@ -11,12 +11,12 @@ import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular
            [class.hidden]="!isInputShown"
            (blur)="hideInput()"
            (input)="onInput($event)">
-  `
+  `,
 })
 export class SearchInputComponent {
-  @ViewChild('input', { static: true }) input: ElementRef;
+  @ViewChild('input', { static: true }) input!: ElementRef<HTMLInputElement>;
 
-  @Output() search: EventEmitter<string> = new EventEmitter<string>();
+  @Output() searchChange = new EventEmitter<string>();
 
   isInputShown = false;
 
@@ -29,7 +29,8 @@ export class SearchInputComponent {
     this.isInputShown = false;
   }
 
-  onInput(val: string) {
-    this.search.emit(val);
+  onInput(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.searchChange.emit(value);
   }
 }
